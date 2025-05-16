@@ -57,15 +57,49 @@
 
         
 
-        <nav>
-          <ul>
-            <h1>Portfolio</h1>
-            <li><a href="#aboutme" class="nav-link">About Me</a></li>
-            <li><a href="#project" class="nav-link">Project</a></li>
-            <li><a href="#Certificates" class="nav-link">Certificates</a></li>
-            <li><a href="#contect1" class="nav-link">Contact</a></li>
-          </ul>
-        </nav>
+      <nav class="navbar">
+        <div class="logo">Portfolio</div>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div> <!-- Hamburger icon -->
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#aboutme" class="nav-link">About Me</a></li>
+          <li><a href="#project" class="nav-link">Project</a></li>
+          <li><a href="#Certificates" class="nav-link">Certificates</a></li>
+          <li><a href="#contect1" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+        <script>
+          const menuToggle = document.getElementById('menu-toggle');
+          const navLinks = document.getElementById('nav-links');
+        
+          menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+          });
+        </script>
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+        
+            window.addEventListener('scroll', () => {
+              let scrollPos = window.scrollY + 70; // ปรับค่า offset ตาม navbar สูง
+        
+              navLinks.forEach(link => {
+                const section = document.querySelector(link.getAttribute('href'));
+                if (section) {
+                  if (
+                    section.offsetTop <= scrollPos &&
+                    (section.offsetTop + section.offsetHeight) > scrollPos
+                  ) {
+                    link.classList.add('active');
+                  } else {
+                    link.classList.remove('active');
+                  }
+                }
+              });
+            });
+          });
+        </script>
+        
+        
         
         
         
@@ -126,11 +160,11 @@ window.addEventListener("scroll", () => {
           
     </header>
 
-    <video id="video-background" autoplay loop muted playsinline>
-        <source src="images/istockphoto-1264267083-640_adpp_is.mp4">
+<video id="video-background" autoplay loop muted playsinline>
+     <source src="images/istockphoto-1264267083-640_adpp_is.mp4">
         
-        <source src="your-video-file.webm" type="video/webm">
-    </video>
+    <source src="your-video-file.webm" type="video/webm">
+</video>
 
                     
     <section>
@@ -140,12 +174,30 @@ window.addEventListener("scroll", () => {
 
         <main>
             </div>
-            <section class="intro"> 
+
+              
+            
+            <section class="intro" id="aboutme"> 
+                <div class="intro-container">
+    
+                    <picture>
+                      <!-- แสดง download-3.png เมื่อหน้าจอเล็ก -->
+                      <source srcset="images/download-3.png" media="(max-width: 768px)">
+                      <!-- แสดง download-2.png สำหรับหน้าจอปกติ -->
+                      <img src="images/download-2.png" alt="Panyaporn" class="floating-image image-profile">
+                    </picture>
+                
+                
+                     
+                        
+                
+                
               <h1 class="animated-title"> <span id="typewriter"></span></h1>
 
                 <p class="animated-text"> UX UI Website Design Developer & frontend</p>
                 <p1 class="animated-text">Bachelor's degree School of Information Technology and Innovation, Bangkok University.<br></p1>
                 <button class="resume-btn" onclick="downloadImage()">Resume</button>
+                
                 <div class="icon-container">
                     <a href="https://www.facebook.com/yinnpyp/" target="_blank">
                       <img src="images/1icon.png" alt="Icon 1" class="clickable-icon">
@@ -162,7 +214,11 @@ window.addEventListener("scroll", () => {
                     <a href="https://www.linkedin.com/in/panyaporn-kiatrungrit-bb5206328/" target="_blank">
                       <img src="images/icon5.png" alt="Icon 3" class="clickable-icon">
                     </a>
+
                   </div>
+
+                  
+                  
                   
 
                   <script>
@@ -208,8 +264,8 @@ window.addEventListener("scroll", () => {
                     function downloadImage() {
                       
                       const link = document.createElement('a');
-                      link.href = 'images/resuma1.pdf'; 
-                      link.download = 'images/resuma1.pdf'; 
+                      link.href = 'images/resume1.pdf'; 
+                      link.download = 'images/resume1.pdf'; 
                       document.body.appendChild(link);
                       link.click();
                       document.body.removeChild(link);
@@ -217,16 +273,15 @@ window.addEventListener("scroll", () => {
                     </script>
                     
             </section>
+            
+            
 
-                <section class="intro" id="aboutme">
-                    <img src="images/download-2.png" alt="Panyaporn Picture" class="profile-pictureimg">
-                    
-                </section>
                 <section class="skills">
                   <div class="skills-container">
                     
                    
                     <img src="images/download-3.png" alt="Panyaporn" class="floating-image">
+                    
                     
                    
                       <h1 class="cascadia-mono" id="animatedText">
@@ -354,13 +409,13 @@ window.addEventListener("scroll", () => {
                       </a>
                       
 
-                      <a href="https://glrlyclassic.my.canva.site">
+                      <a href="https://www.figma.com/proto/z8eVX8pwT08V6bXT9bL8GK/1649796238_Prototype?node-id=10-201">
                         <img src="images/7p1.png" alt="Project 2" class="project-image">
                       </a>
-                      <a href="https://www.figma.com/proto/z8eVX8pwT08V6bXT9bL8GK/1649796238_Prototype?node-id=10-267&t=FC2Ed6KHQQWfTzgW-1">
+                      <a href="https://www.canva.com/design/DAF59G8pxcc/ZwReMDQo1I8Be9EFCnEJIQ/edit?utm_content=DAF59G8pxcc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">
                         <img src="images/p8.png" alt="Project 2" class="project-image">
                       </a>
-                      <a href="https://www.canva.com/design/DAF59G8pxcc/ZwReMDQo1I8Be9EFCnEJIQ/edit?utm_content=DAF59G8pxcc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">
+                      <a href="https://drive.google.com/file/d/1h7zzlgYga7j99wYwkG-ZrOeFbrnkvHMT/view?usp=share_link">
                         <img src="images/p9.png" alt="Project 2" class="project-image">
                       </a>
 
@@ -506,7 +561,7 @@ window.addEventListener("scroll", () => {
         <div class="contact-info">
             <div class="contact-item">
                 <strong>Email</strong><br>
-                panyapon.k@gmail.com
+                panyaporn.kait@gmail.com
             </div>
             <div class="contact-item">
                 <strong>Phone Number</strong><br>
