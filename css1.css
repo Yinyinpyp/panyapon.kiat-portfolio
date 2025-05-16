@@ -12,6 +12,7 @@ html, body {
 }
 
 
+
 body {
 
     background-color: #ffffff;
@@ -109,25 +110,6 @@ body {
     transition: transform 0.3s ease-in-out;
     overflow-x: hidden;
   }
-
-  
-  
-  
-
-  
-  
-
-
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    height: 70px;
-    padding: 10px 20px;
-    background-color: #aa7b7b;
-  }
   
   nav h1, nav ul {
     flex-shrink: 0;
@@ -153,7 +135,7 @@ body {
     width: 100%;
     background-color: #aa7b7b;
     z-index: 1000;
-    font-size: 30px;
+    font-size:20px;
     padding: 10px 20px;
     color: #ffffff;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -164,59 +146,111 @@ nav h1 {
   right: 300px;            
   color: #f0f0f0;
   font-size: 30px;
-  margin-left: 500px;      
+  margin-left: 0px;      
+  padding-left: 0;
+}
+/* เริ่มต้นซ่อน <h1> สำหรับขนาดหน้าจอเล็ก */
+nav h1 {
+  color: #f0f0f0;
+  font-size: 30px;
+  margin-left: 500px;
   padding-left: 0;
   text-align: left;
 }
 
-nav h1 {
-  font-family: 'Tuffy', serif;
-  font-size: 30px;
-  color: #f0f0f0;
+/* ซ่อน <h1> เมื่อหน้าจอเล็กลง */
+/* Layout ปกติ */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #aa7b7b;
+  padding: 10px 20px;
+  color: #fff;
+}
+.nav-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 5px 10px;
+}
+
+.nav-link.active {
+  color: black; /* สีที่เปลี่ยนตอน active */
+  font-weight: bold;
 }
 
 
+@media screen and (min-width: 768px) {
+  .navbar.scrolled {
+    background: #fff;
+    color: #aa7b7b;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
 
-nav.scrolled {
-    background-color: white;
-    color: #000000;
+  .navbar.scrolled a {
+    color: #aa7b7b;
+  }
 }
 
-
-
-nav a {
-  font-family: 'Tuffy', serif;
-  font-size: 20px;
-  color: #f0f0f0;
-  margin-left: 100px;
+/* ปรับสีลิงก์ปกติ (จอเล็กหรือยังไม่ scroll) */
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0 10px;
 }
 
-ul {
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 50px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ปิดแถบเมนูไว้ในมือถือ */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* Responsive สำหรับมือถือ */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #aa7b7b;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .nav-links.active {
     display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    overflow-x: auto;
-    justify-content: flex-end;  
-    color: #000000;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
 }
 
-
-  
-  li {
-    margin: 0 10px;
-  }
-  
-  a {
-    text-decoration: none;
-    white-space: nowrap; 
-  }
-  
-
-a:hover {
-    background-color: #f0f0f0; 
-}
 
 
 .animated-title {
@@ -231,31 +265,34 @@ a:hover {
   height: 100px;      
   margin-left: 0px;
   font-family: 'Poppins', sans-serif;
+  margin-top: 200px;
   
 }
 
 
 #typewriter {
   display: inline-block;
-  min-width: 240px; 
+  min-width: 240px;
   font-size: 50px;
 }
+
+/* ปรับขนาดตัวอักษรให้พอดีกับหน้าจอเล็กลง โดยไม่ใช้ margin-top เยอะ */
 @media screen and (max-width: 768px) {
-  #typewriter {
-    font-size: clamp(24px, 6vw, 40px);
-    margin-top: 160px;
+  #typewriter .animated-title  {
+    font-size: clamp(18px, 6vw, 40px);
     min-width: 180px;
+
   }
 }
-
 
 @media screen and (max-width: 480px) {
   #typewriter {
-    font-size: clamp(20px, 7vw, 35px);
-    margin-top: 180px;
+    font-size: clamp(15px, 7vw, 35px);
     min-width: 140px;
+
   }
 }
+
 
 
 
@@ -295,7 +332,7 @@ a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: absolute;
     right: 90px;
-    top: 50px; 
+    top: 190px; 
   }
   
 
@@ -312,8 +349,8 @@ main {
   width: 55%;
   height: auto;
   float: left;
-  margin-left: 730px;
-  margin-top: -50px;
+  margin-left: 800px;
+  margin-top: 190px;
 
   border-radius: 15px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
@@ -322,6 +359,7 @@ main {
   transform: translateX(100px);
   animation: fadeInSlideRight 1.5s ease-out forwards;
 }
+
 
 
 @keyframes fadeInSlideRight {
@@ -338,10 +376,12 @@ main {
 
 @media screen and (max-width: 768px) {
   .intro img {
-    width: 90%;
-    margin-left: 10px;
-    margin-top: -150px;
+    width: 120%;
+    margin-left: -30px;  
+    margin-right: auto;
     float: none;
+    margin-top: 120px;
+    
   }
 }
 
@@ -366,10 +406,23 @@ main {
   max-width: 50%;
   position: absolute;
   left: 200px;
-  top: 300px;
-
-
+  top: 0px;
 }
+
+@media screen and (max-width: 768px) {
+  .intro {
+    left: 100px; 
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .intro {
+    left: 20px; 
+  }
+}
+
+
+
 
 
 
@@ -390,6 +443,12 @@ main {
 
 .intro h1 span {
     color: #aa7b7b;
+}
+@media screen and (max-width: 768px) {
+  .intro h1 {
+    font-size: 20px;  
+    margin-top: 500px; 
+  }
 }
 
 .intro p {
@@ -419,18 +478,7 @@ main {
 
 
 
-.intro2 {
-    position: relative; 
-}
 
-.intro2 img {
-    width: 120%;
-    height: 10%;
-    position: relative;
-    left: -100px;
-    top: 200px;
-
-}
 
 
 .intro-btn {
@@ -519,18 +567,18 @@ main {
   transition: color 0.3s ease;
 }
 
-
 .nav-link:hover {
   color: #afacaa;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-
 .nav-link.active {
   color: #595959; 
   font-weight: bold;
 }
+
+
 
 
   .content {
@@ -555,41 +603,51 @@ main {
 
 
 .cascadia-mono {
-    font-family:  'Tuffy', serif, sans-serif;
-    font-weight: 400; 
-    font-style: normal; 
-    font-optical-sizing: auto; 
-    margin-left: 10px;
+  
+  font-family: 'Tuffy', serif, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-optical-sizing: auto;
+  margin-left: 10px;
+  transition: margin-top 0.3s ease; 
+}
+
+/* เมื่อหน้าจอเล็กลง (เช่น สูงสุดที่ 768px) ให้ขยับข้อความขึ้น */
+@media (max-width: 768px) {
+  .cascadia-mono {
+      margin-top: -500px;
   }
-  
-
-  
-
-
+}
 
 
   
+
+
+
+
+  
+#video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  display: block;
+  pointer-events: none; 
+}
+
+@media (max-width: 768px) {
   #video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    min-width: 100vw;
-    min-height: 20vh;
-    object-fit: cover;
-    z-index: -1;
-    display: block; 
+    display: none;
   }
-  
-  
-  @media (max-width: 768px) {
-    #video-background {
-      display: none;
-    }
-  
-    body {
-      background-color: #e7cfcf; 
-    }
+
+  body {
+    background-color: #e7cfcf;
   }
+}
+
   
 
 
@@ -600,13 +658,24 @@ main {
   background-color: rgba(170, 123, 123, 0.7); 
   padding: 50px 30px;
   color: #000000;
-  margin-top: 750px;
+  margin-top: 800px;
   margin-left: 700px;
   width: 60%;
-  max-width: 800px;
   border-radius: 10px; 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
 }
+@media (max-width: 768px) {
+  .skills {
+    padding: 30px 20px;
+    font-size: 14px;
+    margin-top: 1150px;  
+    margin-left: 20px; 
+    width: 150%;  
+    height: 100%;  
+  }
+}
+
+
 
   .reveal {
     opacity: 0;
@@ -637,35 +706,93 @@ main {
     font-size: 1.1em;
   }
   .contact-info {
-    bottom: 0; 
-    left: 0; 
-    width: 100%; 
-    display: flex; 
-    flex-direction: row; 
-    justify-content: center; 
-    align-items: center; 
-    text-align: center; 
-    background-color: #fff; 
-    padding: 10px 0; 
+    /* position: fixed; ❌ ลบออก */
+    /* bottom: 0; ❌ ลบออก */
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    padding: 10px 0;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
-    z-index: 1000; 
+    z-index: 1000;
+    flex-wrap: wrap;
 }
-
 
 
 .contact-info div {
     margin: 0 15px; 
+    flex: 1 1 auto; /* ให้ขนาดปรับตามพื้นที่ */
+    min-width: 100px; /* ป้องกันการบีบตัวมากเกินไป */
 }
+
+/* ปรับการแสดงผลเมื่อหน้าจอเล็กกว่า 600px */
+@media (max-width: 600px) {
+  .contact-info {
+      flex-direction: row; /* จัดเรียงแนวตั้งจริง ๆ ตามคอมเมนต์ */
+      padding: 8px 0; /* ลด padding */
+  }
+
+  .contact-info div {
+      margin: 3px 0; /* ลดระยะห่าง */
+      font-size: 8px; /* ลดขนาดตัวอักษร */
+  }
+}
+
+@media (max-width: 400px) {
+  .contact-info {
+      padding: 5px 0;
+  }
+
+  .contact-info div {
+      font-size: 8px;
+      margin: 2px 0;
+  }
+}
+
+
+
 
 
 nav ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
+  transition: margin-left 0.3s ease; 
 }
+
+@media screen and (max-width: 768px) {
+  nav {
+    padding: 0;
+  }
+
+  nav ul {
+    margin: 0;
+    padding: 0;
+    border: none;
+    margin-left: 70px;
+    margin-top: 20px;
+  }
+
+  nav li, nav a {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  nav ul {
+    margin-left: -10px;
+  }
+}
+
 
 nav ul li {
     display: inline-block;
-    margin-right: 20px;
+    margin-right: 0px;
 }
 
 nav ul li a {
@@ -673,9 +800,29 @@ nav ul li a {
   color: #ffffff; 
   transition: color 0.3s ease;
 }
+/* ระยะห่างระหว่างเมนูปกติ */
+nav ul li {
+  margin: 0 40px; 
+}
+
+/* หน้าจอเล็กลง */
+@media screen and (max-width: 768px) {
+  nav ul li {
+    margin: 0 20px; 
+  }
+}
+
+@media screen and (max-width: 480px) {
+  nav ul li {
+    
+    margin: 0 20px; 
+  }
+}
+
+
 
 nav.scrolled ul li a {
-  color: #aa7b7b; 
+  color: #fffdfd; 
 }
 
 
@@ -716,6 +863,10 @@ nav ul li a:hover {
     font-weight: bold;
     font-family: 'Tuffy', serif; 
   }
+  
+
+  
+  
 
 .Service img {
   width: 100%;
@@ -727,6 +878,18 @@ nav ul li a:hover {
   margin-top: 50px;
   transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
+@media screen and (max-width: 768px) {
+  .Service {
+    font-size: 20px;         
+    padding: 40px 20px;  
+  }
+
+  .Service img {
+    max-width: 180px;       
+    margin-top: 20px;       
+  }
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(50px);  
@@ -737,6 +900,14 @@ nav ul li a:hover {
   opacity: 1;
   transform: translateY(0);  
 }
+@media screen and (max-width: 768px) {
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(20px); 
+    transition: all 0.6s ease-in-out; 
+  }
+}
+
 
 
 .Service img:hover {
@@ -768,6 +939,10 @@ nav ul li a:hover {
 
 
 
+
+
+
+
 .skill {
   background-color: #dbb5b5b3;
   text-align: center;
@@ -787,6 +962,15 @@ nav ul li a:hover {
   border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 3, 0.3); 
 }
+@media screen and (max-width: 768px) {
+  .skill {
+    width: 90%;         
+    height: auto;       
+    padding: 15px;
+    margin-top: 40px;
+  }
+}
+
 
 
 
@@ -796,11 +980,20 @@ nav ul li a:hover {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-
   opacity: 0;
   transform: translateX(-50px); 
   animation: fadeInSlideLeft 1.2s ease-out forwards;
 }
+
+/* เมื่อหน้าจอมีขนาดเล็กกว่า 768px */
+@media screen and (max-width: 768px) {
+  .skills-container {
+    margin-top: 540px; 
+    transform: translateX(0) translateY(20px); 
+    opacity: 1; 
+  }
+}
+
 
 @keyframes fadeInSlideLeft {
   from {
@@ -815,12 +1008,7 @@ nav ul li a:hover {
 
 
 
-.skills-image img {
-  max-width: 250px;
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
+
 
 
 
@@ -838,18 +1026,51 @@ nav ul li a:hover {
 
 
 
-.skill img {
-  width: 900px;
+/* ตั้งค่าพื้นฐาน */
+.skill-grid {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  padding: 20px;
+  width: 100%; 
+}
+
+/* รูปภาพในแต่ละคอลัมน์ */
+.skill-grid img {
+  width: 100%; 
   max-width: 250px; 
-  height: auto;
-  margin: 20px; 
-  display: inline-block; 
+  height: auto; 
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-top: 50px;
-  flex: 1 1 calc(33.333% - 40px);
-  box-shadow: 0 4px 8px rgb(255, 255, 255);
+  flex: 1 1 calc(33.333% - 10px);
 }
+
+/* สำหรับหน้าจอที่กว้างกว่า 768px ให้แสดง 4 รูปในแถว */
+@media screen and (min-width: 768px) {
+  .skill-grid img {
+    flex: 1 1 calc(25% - 10px); 
+    max-width: 250px; 
+  }
+}
+
+/* สำหรับหน้าจอที่กว้างกว่า 480px และน้อยกว่า 768px ให้แสดง 3 รูปในแถว */
+@media screen and (max-width: 767px) {
+  .skill-grid img {
+    flex: 1 1 calc(33.333% - 10px); 
+    max-width: 150px; 
+  }
+}
+
+/* สำหรับหน้าจอที่เล็กกว่าหรือเท่ากับ 480px ให้แสดง 2 รูปในแถว */
+@media screen and (max-width: 480px) {
+  .skill-grid img {
+    flex: 1 1 calc(50% - 10px); 
+    max-width: 40%; 
+  }
+}
+
 
 
 .skill-images {
@@ -885,6 +1106,7 @@ nav ul li a:hover {
   margin-top: 90px;
   transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
+
 .reveal {
   opacity: 0;
   transform: translateY(50px);
@@ -912,16 +1134,42 @@ nav ul li a:hover {
     font-weight: bold; 
     font-family: 'Poppins', sans-serif; 
 }   
-.Certificates img {
-    width: 100%;
-    margin-top: 500px;
-    max-width: 550px;
-    height: auto;
-    margin: 10px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+@media screen and (max-width: 768px) {
+  .Certificates {
+      margin-top: 100px; 
+      max-width: 450px; 
+      margin-left: 50px;
+  }
 }
+.Certificates img {
+  width: 100%; 
+  margin-top: 500px; 
+  max-width: 550px; 
+  height: auto; 
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* สำหรับหน้าจอที่มีขนาดเล็กกว่า 768px (แท็บเล็ต) */
+@media screen and (max-width: 768px) {
+  .Certificates img {
+      margin-top: 100px; 
+      max-width: 450px; 
+      margin-left: 0px;
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  .Certificates img {
+      margin-top: 100px; 
+      max-width: 70%; 
+      margin-left: 0px;
+  }
+}
+
 
 .Certificates img:hover {
     transform: scale(1.10); 
@@ -944,59 +1192,147 @@ nav ul li a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     margin-top: 300px;
   }
+  @media screen and (max-width: 768px) {
+    .contect1 img {
+        margin-top: 50px; 
+        max-width: 650px; 
+        margin-left: 0px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .contect1 img {
+        margin-top: 50px; 
+        max-width: 100%; 
+        margin-left: 0px;
+    }
+  }
+  
   
   .text-box {
     position: absolute;
     top: 75%; 
     left: 23%;
-    transform: translate(20%, -50%); 
+    transform: translate(20%, -50%);
     background-color: rgba(175, 168, 168, 0); 
     padding: 5px;
     border-radius: 10px;
     width: 40%; 
-  }
-  
-  .text-box input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-    margin-top: 20px;
-    margin-right: 10px;
-  }
-  
-  .text-box input::placeholder {
-    color: #fff;
-    opacity: 0.8;
-  }
+}
+
+.text-box input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+/* ลดขนาด font เมื่อจอเล็กลง (เช่น แท็บเล็ต) */
+@media screen and (max-width: 768px) {
+.text-box input {
+  font-size: 10px;
+  padding: 8px;
+}
+}
+
+
+
+
+
+/* สำหรับหน้าจอที่เล็กกว่า 768px (แท็บเล็ตและมือถือ) */
+
+
+#input2 {
+  height: 45px; 
+  resize: vertical; 
+}
+
+#input1 {
+  height: 45px; 
+  resize: vertical; 
+}
+
+#input3 {
+  height: 130px; 
+  resize: vertical; 
+}
+
+
+/* สำหรับหน้าจอที่เล็กกว่า 768px (แท็บเล็ตและมือถือ) */
+@media screen and (max-width: 768px) {
   #input2 {
-    height: 45px; 
-    resize: vertical; 
+    
+    
+    height: 20px;  
+    margin-top: 10px;
   }
+
   #input1 {
-    height: 45px; 
-    resize: vertical; 
+    height: 10px; 
+    margin-top: 50px; 
   }
 
   #input3 {
-    height: 130px; 
-    resize: vertical; 
+    height: 50px;
+    margin-top: 10px;  
   }
-  .send {
-    margin-top: 100px;
-    background-color: #8e8983;
-    color: #f7f7f7;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 20px;
-    border-radius: 999px; 
-    top: 250px;
-    margin-left: 0px;
-    margin-top: 40px;
 }
+
+/* สำหรับหน้าจอที่เล็กกว่า 480px (มือถือ) */
+@media screen and (max-width: 480px) {
+  #input1 {
+    margin-top: 0px;
+    height: 5px; 
+  }
+
+  #input2 {
+    margin-top: 5px;
+    height: 15px;  
+  }
+
+  #input3 {
+    margin-top: 5px;
+    height: 40px;  
+  }
+}
+
+.send {
+  margin-top: 100px;
+  background-color: #8e8983;
+  color: #f7f7f7;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 999px; 
+  top: 250px;
+  margin-left: 0px;
+  margin-top: 40px;
+}
+
+/* สำหรับหน้าจอที่เล็กกว่า 768px (เช่น มือถือ) */
+@media screen and (max-width: 768px) {
+  .send {
+      font-size: 6px;  
+      padding: 8px 16px;  
+      margin-top: 0px;  
+      width: auto;  
+  }
+}
+
+/* สำหรับหน้าจอที่เล็กกว่า 480px */
+@media screen and (max-width: 480px) {
+  .send {
+      font-size: 9px;  
+      padding: 6px 12px; 
+      margin-top: 10px;  
+  }
+}
+
 
 #portfolio1 {
     scroll-margin-top: 1000px; 
@@ -1004,7 +1340,8 @@ nav ul li a:hover {
 
   
   .project2 {
-    max-width: 1400px;
+    max-width: 1200px;
+    
     margin: 0 auto;
     padding: 60px 40px;
     text-align: center;
@@ -1026,7 +1363,7 @@ nav ul li a:hover {
   .project2 .image-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-    gap: 20px;
+    gap: 50px;
     justify-items: center;
   }
   
@@ -1038,7 +1375,8 @@ nav ul li a:hover {
   
   .project2 .image-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     justify-items: center;
     position: relative;
@@ -1058,6 +1396,24 @@ nav ul li a:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45);
     z-index: 10;          
   }
+  @media screen and (max-width: 768px) {
+    .project2 .image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 คอลัมน์ */
+      gap: 20px;
+      justify-items: center;
+      padding: 0px 10px;
+      margin-left: 10px;
+    }
+  
+    .project2 .image-grid img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+  }
+  
+  
   
   
 
@@ -1072,6 +1428,14 @@ nav ul li a:hover {
     opacity: 0;
     transform: translateY(30px);
   }
+  @media screen and (max-width: 768px) {
+    .project2 img {
+      max-width: 90%;        
+      margin: 20px auto;     
+      display: block;        
+    }
+  }
+  
   
   .project2 img.visible {
     opacity: 1;
@@ -1084,11 +1448,11 @@ nav ul li a:hover {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
   }
   
-  /* ปุ่ม */  
+
   .project2 a:hover {
     background-color: #ffffff;
   }
-  /* คลาสเฉพาะรูปที่ต้องการให้เปลี่ยน */
+
 .hover-image {
   position: relative;
   display: inline-block;
@@ -1099,6 +1463,25 @@ nav ul li a:hover {
 .hover-image:hover::after {
   opacity: 1;
 }
+
+.image-profile {
+  position: absolute;  
+  top: 20px; 
+  left: 20px; 
+  width: 150px; 
+  height: auto;
+}
+
+
+@media (max-width: 768px) {
+  .image-profile {
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%); 
+      width: 120px; 
+  }
+}
+
   
 
 
